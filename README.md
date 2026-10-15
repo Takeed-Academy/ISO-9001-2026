@@ -83,18 +83,32 @@ attempt. Question 1 is the same question for the whole room, a retake is the
 same paper again, and the printed PDFs are numbered by position because that
 position now means something.
 
-**The order is grouped by standard** — all 70 ISO 9001 questions, then the 35
-for ISO/IEC 17021-1, then the 35 for ISO 19011 — and the three revision papers
-are exactly the three contiguous blocks of the full paper.
+**The order is grouped by standard, then sorted by clause** — all 70 ISO 9001
+questions running 4.1 → 10.2, then the 35 for ISO/IEC 17021-1, then the 35 for
+ISO 19011. The three revision papers are exactly the three blocks of the full
+paper, in the same sequence, and both PDFs are generated from that one order.
+
+Within a standard each clause appears once, with its multiple-choice and
+true/false items together. No section doubles back to an earlier clause — the
+test suite counts back-steps and fails on any.
 
 That is not the pack's own numbering. The pack numbers by *format*: `Q001`–
 `Q100` are its multiple-choice items and `Q101`–`Q140` its true/false ones,
 with all three standards interleaved through both. Taken literally that order
 runs 9001 ×56, 17021-1 ×22, 19011 ×22, then 9001 again ×14, and so on — each
-standard appearing twice, split by question format. Grouping by standard is how
-the course teaches it and how the revision papers were already split, so the
-bank is regrouped once at build time and the site, both PDFs and the revision
-papers all share that single order.
+standard appearing twice, split by question format.
+
+Left that way, a section reads as disordered when it is really ordered twice:
+a full sweep of one standard's multiple-choice questions from 4.1 to 10.2,
+then a second sweep of its true/false questions starting again at 4.1. A
+candidate revising clause 8.3 would meet it once near the start and again
+two-thirds of the way down.
+
+So the bank is regrouped by standard and sorted by clause once, at build time,
+and the site, both PDFs and the three revision papers all share that single
+order. A clause range such as `4.2-5.2` sorts on its first clause, and clauses
+compare as numbers rather than text, so `8.10` would follow `8.9` instead of
+preceding it.
 
 This is a one-flag choice in `app.js`:
 

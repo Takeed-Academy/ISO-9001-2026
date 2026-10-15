@@ -76,21 +76,47 @@ generous by default. It is one number in `tools/build_bank.py`.
 
 ---
 
-## Random order, every sitting
+## Fixed order, the same paper for everyone
 
-Questions are drawn in a fresh order each time a paper is started. Two
-candidates side by side are never on the same question, and a retake is not the
-same paper in the same sequence.
+Questions appear in a fixed order, identically for every candidate and on every
+attempt. Question 1 is the same question for the whole room, a retake is the
+same paper again, and the printed PDFs are numbered by position because that
+position now means something.
 
-The shuffle is Fisher-Yates, not `sort(() => Math.random() - 0.5)`. That
-one-liner is wrong twice over: it does not produce a uniform permutation, and
-because the result depends on the engine's sorting algorithm it is
-*differently* wrong in each browser. The test suite scans for it.
+**The order is grouped by standard** — all 70 ISO 9001 questions, then the 35
+for ISO/IEC 17021-1, then the 35 for ISO 19011 — and the three revision papers
+are exactly the three contiguous blocks of the full paper.
 
-The order is drawn once and persisted, so Resume brings back the identical
-sequence rather than reshuffling.
+That is not the pack's own numbering. The pack numbers by *format*: `Q001`–
+`Q100` are its multiple-choice items and `Q101`–`Q140` its true/false ones,
+with all three standards interleaved through both. Taken literally that order
+runs 9001 ×56, 17021-1 ×22, 19011 ×22, then 9001 again ×14, and so on — each
+standard appearing twice, split by question format. Grouping by standard is how
+the course teaches it and how the revision papers were already split, so the
+bank is regrouped once at build time and the site, both PDFs and the revision
+papers all share that single order.
 
-### What does not shuffle: the options
+This is a one-flag choice in `app.js`:
+
+```js
+var SHUFFLE_QUESTIONS = false;   // true draws a fresh random order per sitting
+```
+
+The shuffle itself is still wired up behind that flag. It is Fisher-Yates, not
+`sort(() => Math.random() - 0.5)` — that one-liner is wrong twice over: it does
+not produce a uniform permutation, and because the result depends on the
+engine's sorting algorithm it is *differently* wrong in each browser.
+
+**The trade.** A fixed order makes the paper easy to administer, mark and talk
+through, and it is what an invigilated sitting usually wants. It also means two
+candidates sitting side by side are on the same question at the same time, and
+that someone who has seen the paper knows what is coming. If that matters more
+than convenience for a given cohort, flip the flag.
+
+Either way the order is written into the session record when a paper starts and
+persisted, so Resume brings back exactly what was on screen.
+
+### What never shuffles: the options
 
 Shuffling questions changes what you are asked next. Shuffling options would
 change which letter is correct — and this pack guarantees, on its cover,
@@ -158,14 +184,18 @@ disagreeing with each other. The gate checks every pairing, plus:
 
 ---
 
-## Question ids, not numbers
+## Question ids alongside numbers
 
-Because the order is per-sitting, **"question 7" is a different question for
-every candidate**. The id (`Q001` … `Q140`) is the anchor:
+With the order fixed, "question 7" is the same question for everyone, so the
+on-screen position is now a usable reference and matches the printed paper.
+
+The id (`Q001` … `Q140`) is kept beside it anyway, because it is the reference
+that survives a change of order:
 
 - every review card shows its id;
-- the instructor key is sorted by id, grouped by standard;
-- a trainer and a candidate discussing `Q043` are discussing the same question.
+- the instructor key and the printed paper are both keyed by id;
+- a trainer and a candidate discussing `Q043` are discussing the same question
+  whether or not the order is ever shuffled again.
 
 ---
 
@@ -251,8 +281,9 @@ bash  tools/verify_all.sh       # the full gate
 quick key grouped by standard, then every question followed directly by its
 answer, explanation and reference. Distractors are not printed.
 
-Everything is keyed by question id. The site draws a fresh order per sitting, so
-a printed position would match nobody.
+Everything is keyed by question id. With the order fixed the printed position
+also matches the screen — but the id is what stays correct if the order is ever
+shuffled again, so it remains the reference.
 
 True/False answers print as the word, not a letter.
 

@@ -253,6 +253,20 @@ window.TAKEED_BANK = {
     "Q054",
     "Q055",
     "Q056",
+    "Q101",
+    "Q102",
+    "Q103",
+    "Q104",
+    "Q105",
+    "Q106",
+    "Q107",
+    "Q108",
+    "Q109",
+    "Q110",
+    "Q111",
+    "Q112",
+    "Q113",
+    "Q114",
     "Q057",
     "Q058",
     "Q059",
@@ -275,6 +289,19 @@ window.TAKEED_BANK = {
     "Q076",
     "Q077",
     "Q078",
+    "Q115",
+    "Q116",
+    "Q117",
+    "Q118",
+    "Q119",
+    "Q120",
+    "Q121",
+    "Q122",
+    "Q123",
+    "Q124",
+    "Q125",
+    "Q126",
+    "Q127",
     "Q079",
     "Q080",
     "Q081",
@@ -297,33 +324,6 @@ window.TAKEED_BANK = {
     "Q098",
     "Q099",
     "Q100",
-    "Q101",
-    "Q102",
-    "Q103",
-    "Q104",
-    "Q105",
-    "Q106",
-    "Q107",
-    "Q108",
-    "Q109",
-    "Q110",
-    "Q111",
-    "Q112",
-    "Q113",
-    "Q114",
-    "Q115",
-    "Q116",
-    "Q117",
-    "Q118",
-    "Q119",
-    "Q120",
-    "Q121",
-    "Q122",
-    "Q123",
-    "Q124",
-    "Q125",
-    "Q126",
-    "Q127",
     "Q128",
     "Q129",
     "Q130",
@@ -1518,6 +1518,272 @@ window.TAKEED_BANK = {
    }
   },
   {
+   "id": "Q101",
+   "standard": "ISO 9001:2026",
+   "category": "ISO9001-2026",
+   "clause": "4.1",
+   "reference": "ISO 9001:2026 4.1",
+   "type": "tf",
+   "difficulty": "Advanced - Lead Auditor",
+   "points": 1,
+   "answer": 0,
+   "en": {
+    "question": "A QMS context assessment can conclude that climate change is not a relevant issue, provided the organization has actually evaluated its relevance to intended quality outcomes using reasonable evidence and context.",
+    "options": [
+     "True",
+     "False"
+    ],
+    "explanation": "The requirement concerns considering relevance; it does not predetermine the conclusion."
+   }
+  },
+  {
+   "id": "Q102",
+   "standard": "ISO 9001:2026",
+   "category": "ISO9001-2026",
+   "clause": "4.2",
+   "reference": "ISO 9001:2026 4.2",
+   "type": "tf",
+   "difficulty": "Advanced - Lead Auditor",
+   "points": 1,
+   "answer": 1,
+   "en": {
+    "question": "Where a regulator's legal product-safety requirements are relevant to QMS outputs, management may omit the regulator from interested-party analysis if customers have not mentioned those requirements in contracts.",
+    "options": [
+     "True",
+     "False"
+    ],
+    "explanation": "Relevant statutory and regulatory requirements are not optional based on customer wording."
+   }
+  },
+  {
+   "id": "Q103",
+   "standard": "ISO 9001:2026",
+   "category": "ISO9001-2026",
+   "clause": "4.3",
+   "reference": "ISO 9001:2026 4.3",
+   "type": "tf",
+   "difficulty": "Advanced - Lead Auditor",
+   "points": 1,
+   "answer": 0,
+   "en": {
+    "question": "A company can justify a requirement as not applicable to its QMS without weakening its ability or responsibility to ensure conforming products and services, but must support that conclusion in its scope.",
+    "options": [
+     "True",
+     "False"
+    ],
+    "explanation": "Non-applicability needs a defensible basis and cannot impair product/service conformity."
+   }
+  },
+  {
+   "id": "Q104",
+   "standard": "ISO 9001:2026",
+   "category": "ISO9001-2026",
+   "clause": "5.1.1",
+   "reference": "ISO 9001:2026 5.1.1",
+   "type": "tf",
+   "difficulty": "Advanced - Lead Auditor",
+   "points": 1,
+   "answer": 1,
+   "en": {
+    "question": "If an organization has an approved ethics policy, the auditor should consider ISO 9001:2026 leadership expectations fulfilled without reviewing actual management behaviors or quality-culture outcomes.",
+    "options": [
+     "True",
+     "False"
+    ],
+    "explanation": "A policy alone does not demonstrate active promotion of quality culture and ethical behavior."
+   }
+  },
+  {
+   "id": "Q105",
+   "standard": "ISO 9001:2026",
+   "category": "ISO9001-2026",
+   "clause": "6.1",
+   "reference": "ISO 9001:2026 6.1",
+   "type": "tf",
+   "difficulty": "Advanced - Lead Auditor",
+   "points": 1,
+   "answer": 0,
+   "en": {
+    "question": "An organization may use qualitative risk-and-opportunity evaluation methods rather than a numerical risk matrix, as long as its arrangements are appropriate and support effective QMS planning and evaluation.",
+    "options": [
+     "True",
+     "False"
+    ],
+    "explanation": "ISO 9001 does not mandate one risk analysis technique."
+   }
+  },
+  {
+   "id": "Q106",
+   "standard": "ISO 9001:2026",
+   "category": "ISO9001-2026",
+   "clause": "6.2",
+   "reference": "ISO 9001:2026 6.2",
+   "type": "tf",
+   "difficulty": "Advanced - Lead Auditor",
+   "points": 1,
+   "answer": 1,
+   "en": {
+    "question": "Because quality objectives are linked to strategic direction, it is acceptable to leave them unmeasurable when top management formally approves the objective statement and allocates an annual budget.",
+    "options": [
+     "True",
+     "False"
+    ],
+    "explanation": "Quality objectives are required to be measurable; approval and funding do not replace measurement."
+   }
+  },
+  {
+   "id": "Q107",
+   "standard": "ISO 9001:2026",
+   "category": "ISO9001-2026",
+   "clause": "6.3",
+   "reference": "ISO 9001:2026 6.3",
+   "type": "tf",
+   "difficulty": "Advanced - Lead Auditor",
+   "points": 1,
+   "answer": 0,
+   "en": {
+    "question": "A change to a QMS process should be assessed in light of potential consequences, the integrity of the system, available resources and affected responsibilities before or during planned implementation.",
+    "options": [
+     "True",
+     "False"
+    ],
+    "explanation": "Planning changes means assessing purpose, consequences, system integrity and resources."
+   }
+  },
+  {
+   "id": "Q108",
+   "standard": "ISO 9001:2026",
+   "category": "ISO9001-2026",
+   "clause": "7.2",
+   "reference": "ISO 9001:2026 7.2",
+   "type": "tf",
+   "difficulty": "Advanced - Lead Auditor",
+   "points": 1,
+   "answer": 1,
+   "en": {
+    "question": "Completion of a prescribed training course is by itself sufficient evidence that all persons carrying out quality-affecting work are competent, regardless of observed results and the complexity of their assigned tasks.",
+    "options": [
+     "True",
+     "False"
+    ],
+    "explanation": "Competence rests on demonstrated suitability, which may involve more than training attendance."
+   }
+  },
+  {
+   "id": "Q109",
+   "standard": "ISO 9001:2026",
+   "category": "ISO9001-2026",
+   "clause": "7.3",
+   "reference": "ISO 9001:2026 7.3",
+   "type": "tf",
+   "difficulty": "Advanced - Lead Auditor",
+   "points": 1,
+   "answer": 0,
+   "en": {
+    "question": "ISO 9001:2026 adds awareness of organizational quality culture and ethical behavior to the established expectations concerning quality policy, objectives, contribution and implications of nonconformity.",
+    "options": [
+     "True",
+     "False"
+    ],
+    "explanation": "The 2026 edition expands awareness to quality culture and ethical behavior."
+   }
+  },
+  {
+   "id": "Q110",
+   "standard": "ISO 9001:2026",
+   "category": "ISO9001-2026",
+   "clause": "8.3.4",
+   "reference": "ISO 9001:2026 8.3.4",
+   "type": "tf",
+   "difficulty": "Advanced - Lead Auditor",
+   "points": 1,
+   "answer": 1,
+   "en": {
+    "question": "Where a design output satisfies all documented engineering input specifications, design validation for intended user needs can automatically be omitted even if the product's real operating environment differs from the test environment.",
+    "options": [
+     "True",
+     "False"
+    ],
+    "explanation": "Verification alone does not substitute for applicable validation of intended use."
+   }
+  },
+  {
+   "id": "Q111",
+   "standard": "ISO 9001:2026",
+   "category": "ISO9001-2026",
+   "clause": "8.4",
+   "reference": "ISO 9001:2026 8.4",
+   "type": "tf",
+   "difficulty": "Advanced - Lead Auditor",
+   "points": 1,
+   "answer": 0,
+   "en": {
+    "question": "An organization remains responsible for ensuring conformity when a process is externally provided, so it should determine suitable supplier controls based on potential effects rather than relying solely on contract language.",
+    "options": [
+     "True",
+     "False"
+    ],
+    "explanation": "External provision does not eliminate the organization's QMS responsibilities."
+   }
+  },
+  {
+   "id": "Q112",
+   "standard": "ISO 9001:2026",
+   "category": "ISO9001-2026",
+   "clause": "8.6",
+   "reference": "ISO 9001:2026 8.6",
+   "type": "tf",
+   "difficulty": "Advanced - Lead Auditor",
+   "points": 1,
+   "answer": 1,
+   "en": {
+    "question": "A customer-requested delivery date permits release before planned acceptance arrangements are satisfactorily completed, even when no appropriate authority has approved a concession to the normal release rules.",
+    "options": [
+     "True",
+     "False"
+    ],
+    "explanation": "Release normally follows planned arrangements unless duly authorized and, where applicable, accepted."
+   }
+  },
+  {
+   "id": "Q113",
+   "standard": "ISO 9001:2026",
+   "category": "ISO9001-2026",
+   "clause": "9.2",
+   "reference": "ISO 9001:2026 9.2",
+   "type": "tf",
+   "difficulty": "Advanced - Lead Auditor",
+   "points": 1,
+   "answer": 0,
+   "en": {
+    "question": "A risk-informed internal audit programme may prioritize unstable high-impact processes and revisit prior findings while still ensuring that the QMS is audited against the applicable criteria over time.",
+    "options": [
+     "True",
+     "False"
+    ],
+    "explanation": "Programme planning considers process importance, changes and previous results."
+   }
+  },
+  {
+   "id": "Q114",
+   "standard": "ISO 9001:2026",
+   "category": "ISO9001-2026",
+   "clause": "10.1",
+   "reference": "ISO 9001:2026 10.1",
+   "type": "tf",
+   "difficulty": "Advanced - Lead Auditor",
+   "points": 1,
+   "answer": 1,
+   "en": {
+    "question": "Under ISO 9001:2026, continual improvement is evaluated against clause 10.3, while clause 10.1 addresses only isolated improvements and has no link to information from monitoring or management review.",
+    "options": [
+     "True",
+     "False"
+    ],
+    "explanation": "In 2026 continual improvement is 10.1, and 10.3 does not exist."
+   }
+  },
+  {
    "id": "Q057",
    "standard": "ISO/IEC 17021-1:2015",
    "category": "ISO17021-1",
@@ -1980,6 +2246,253 @@ window.TAKEED_BANK = {
    }
   },
   {
+   "id": "Q115",
+   "standard": "ISO/IEC 17021-1:2015",
+   "category": "ISO17021-1",
+   "clause": "5.2",
+   "reference": "ISO/IEC 17021-1:2015 5.2",
+   "type": "tf",
+   "difficulty": "Advanced - Lead Auditor",
+   "points": 1,
+   "answer": 1,
+   "en": {
+    "question": "A certification body may rely on client consent to eliminate any impartiality threat created by its auditors providing consulting services to the same QMS, without assessing or controlling that threat further.",
+    "options": [
+     "True",
+     "False"
+    ],
+    "explanation": "Consent does not remove impartiality duties or conflicts from consulting involvement."
+   }
+  },
+  {
+   "id": "Q116",
+   "standard": "ISO/IEC 17021-1:2015",
+   "category": "ISO17021-1",
+   "clause": "7.1-7.2",
+   "reference": "ISO/IEC 17021-1:2015 7.1-7.2",
+   "type": "tf",
+   "difficulty": "Advanced - Lead Auditor",
+   "points": 1,
+   "answer": 0,
+   "en": {
+    "question": "Before assigning a certification team, the body should determine applicable competence needs for the technical area and ensure the collective team's knowledge and skills match the audit's scope and complexity.",
+    "options": [
+     "True",
+     "False"
+    ],
+    "explanation": "Competence must be determined and matched to certification activities and technical areas."
+   }
+  },
+  {
+   "id": "Q117",
+   "standard": "ISO/IEC 17021-1:2015",
+   "category": "ISO17021-1",
+   "clause": "9.1",
+   "reference": "ISO/IEC 17021-1:2015 9.1",
+   "type": "tf",
+   "difficulty": "Advanced - Lead Auditor",
+   "points": 1,
+   "answer": 1,
+   "en": {
+    "question": "Where two clients have different organizational complexity and regulatory exposure, the certification body can use exactly the same predetermined audit duration without documenting any consideration of the differences.",
+    "options": [
+     "True",
+     "False"
+    ],
+    "explanation": "Audit time requires suitable, justified consideration of relevant factors."
+   }
+  },
+  {
+   "id": "Q118",
+   "standard": "ISO/IEC 17021-1:2015",
+   "category": "ISO17021-1",
+   "clause": "9.3.1",
+   "reference": "ISO/IEC 17021-1:2015 9.3.1",
+   "type": "tf",
+   "difficulty": "Advanced - Lead Auditor",
+   "points": 1,
+   "answer": 0,
+   "en": {
+    "question": "Stage 1 can inform whether the client is ready for Stage 2 by examining QMS documentation, relevant site conditions and internal audit or management review arrangements, among other topics.",
+    "options": [
+     "True",
+     "False"
+    ],
+    "explanation": "Stage 1 assesses preparedness and supports planning of Stage 2."
+   }
+  },
+  {
+   "id": "Q119",
+   "standard": "ISO/IEC 17021-1:2015",
+   "category": "ISO17021-1",
+   "clause": "9.3.2",
+   "reference": "ISO/IEC 17021-1:2015 9.3.2",
+   "type": "tf",
+   "difficulty": "Advanced - Lead Auditor",
+   "points": 1,
+   "answer": 1,
+   "en": {
+    "question": "An initial certification audit is adequately completed after Stage 1 if procedures appear consistent with the ISO standard; a Stage 2 effectiveness assessment is therefore unnecessary whenever a manual exists.",
+    "options": [
+     "True",
+     "False"
+    ],
+    "explanation": "Initial certification ordinarily uses Stage 1 and Stage 2, including effectiveness evaluation."
+   }
+  },
+  {
+   "id": "Q120",
+   "standard": "ISO/IEC 17021-1:2015",
+   "category": "ISO17021-1",
+   "clause": "9.4.5",
+   "reference": "ISO/IEC 17021-1:2015 9.4.5",
+   "type": "tf",
+   "difficulty": "Advanced - Lead Auditor",
+   "points": 1,
+   "answer": 0,
+   "en": {
+    "question": "A certification nonconformity should identify the applicable requirement and be supported by objective evidence, rather than rely on the auditor's personal preference for one particular management technique.",
+    "options": [
+     "True",
+     "False"
+    ],
+    "explanation": "Audit findings require clear criteria and supporting evidence."
+   }
+  },
+  {
+   "id": "Q121",
+   "standard": "ISO/IEC 17021-1:2015",
+   "category": "ISO17021-1",
+   "clause": "9.5.1",
+   "reference": "ISO/IEC 17021-1:2015 9.5.1",
+   "type": "tf",
+   "difficulty": "Advanced - Lead Auditor",
+   "points": 1,
+   "answer": 0,
+   "en": {
+    "question": "The person making the certification decision should be different from the person who carried out the audit, even if the lead auditor strongly recommends granting certification to the client.",
+    "options": [
+     "True",
+     "False"
+    ],
+    "explanation": "Separation of audit performance from certification decision-making is required."
+   }
+  },
+  {
+   "id": "Q122",
+   "standard": "ISO/IEC 17021-1:2015",
+   "category": "ISO17021-1",
+   "clause": "9.5.3",
+   "reference": "ISO/IEC 17021-1:2015 9.5.3",
+   "type": "tf",
+   "difficulty": "Advanced - Lead Auditor",
+   "points": 1,
+   "answer": 0,
+   "en": {
+    "question": "If verification of correction and corrective action for a major Stage 2 nonconformity is not completed within six months after the final day of Stage 2, another Stage 2 is required before recommending certification.",
+    "options": [
+     "True",
+     "False"
+    ],
+    "explanation": "The standard specifies the six-month consequence for initial certification."
+   }
+  },
+  {
+   "id": "Q123",
+   "standard": "ISO/IEC 17021-1:2015",
+   "category": "ISO17021-1",
+   "clause": "9.6.2",
+   "reference": "ISO/IEC 17021-1:2015 9.6.2",
+   "type": "tf",
+   "difficulty": "Advanced - Lead Auditor",
+   "points": 1,
+   "answer": 1,
+   "en": {
+    "question": "For continuing certification, a surveillance programme can be based solely on the certified client's self-declaration and internal audit reports, with no certification-body audit activities necessary throughout the cycle.",
+    "options": [
+     "True",
+     "False"
+    ],
+    "explanation": "The certification body must conduct suitable surveillance auditing and other activities."
+   }
+  },
+  {
+   "id": "Q124",
+   "standard": "ISO/IEC 17021-1:2015",
+   "category": "ISO17021-1",
+   "clause": "9.6.3",
+   "reference": "ISO/IEC 17021-1:2015 9.6.3",
+   "type": "tf",
+   "difficulty": "Advanced - Lead Auditor",
+   "points": 1,
+   "answer": 0,
+   "en": {
+    "question": "A recertification audit considers performance over the certification cycle, including previous surveillance reports and relevant organizational changes, instead of focusing only on documents produced during the final month.",
+    "options": [
+     "True",
+     "False"
+    ],
+    "explanation": "Recertification evaluates continued conformity and effectiveness over the cycle."
+   }
+  },
+  {
+   "id": "Q125",
+   "standard": "ISO/IEC 17021-1:2015",
+   "category": "ISO17021-1",
+   "clause": "9.6.5",
+   "reference": "ISO/IEC 17021-1:2015 9.6.5",
+   "type": "tf",
+   "difficulty": "Advanced - Lead Auditor",
+   "points": 1,
+   "answer": 0,
+   "en": {
+    "question": "A certification body should have a defined process for suspending, withdrawing or reducing certification scope when warranted, but an individual auditor does not automatically have authority to cancel a certificate on site.",
+    "options": [
+     "True",
+     "False"
+    ],
+    "explanation": "Status changes are certification-body decisions under established processes."
+   }
+  },
+  {
+   "id": "Q126",
+   "standard": "ISO/IEC 17021-1:2015",
+   "category": "ISO17021-1",
+   "clause": "9.7",
+   "reference": "ISO/IEC 17021-1:2015 9.7",
+   "type": "tf",
+   "difficulty": "Advanced - Lead Auditor",
+   "points": 1,
+   "answer": 1,
+   "en": {
+    "question": "An appeal against a certification decision may be evaluated solely by the individual who made the contested decision, provided the client has signed the appeal form and the original decision was documented.",
+    "options": [
+     "True",
+     "False"
+    ],
+    "explanation": "Appeals require an impartial evaluation and decision process."
+   }
+  },
+  {
+   "id": "Q127",
+   "standard": "ISO/IEC 17021-1:2015",
+   "category": "ISO17021-1",
+   "clause": "9.8",
+   "reference": "ISO/IEC 17021-1:2015 9.8",
+   "type": "tf",
+   "difficulty": "Advanced - Lead Auditor",
+   "points": 1,
+   "answer": 1,
+   "en": {
+    "question": "Complaints alleging misleading use of certification marks need not be considered when they come from external parties rather than the certified organization, even where evidence is presented and the claim concerns the certification body.",
+    "options": [
+     "True",
+     "False"
+    ],
+    "explanation": "Complaint handling includes relevant complaints from interested parties."
+   }
+  },
+  {
    "id": "Q079",
    "standard": "ISO 19011:2026",
    "category": "ISO19011-2026",
@@ -2439,519 +2952,6 @@ window.TAKEED_BANK = {
      "Label both combined audits because separate organizations always use coordinated procedures."
     ],
     "explanation": "Joint refers to auditing organizations; combined refers to management systems audited together."
-   }
-  },
-  {
-   "id": "Q101",
-   "standard": "ISO 9001:2026",
-   "category": "ISO9001-2026",
-   "clause": "4.1",
-   "reference": "ISO 9001:2026 4.1",
-   "type": "tf",
-   "difficulty": "Advanced - Lead Auditor",
-   "points": 1,
-   "answer": 0,
-   "en": {
-    "question": "A QMS context assessment can conclude that climate change is not a relevant issue, provided the organization has actually evaluated its relevance to intended quality outcomes using reasonable evidence and context.",
-    "options": [
-     "True",
-     "False"
-    ],
-    "explanation": "The requirement concerns considering relevance; it does not predetermine the conclusion."
-   }
-  },
-  {
-   "id": "Q102",
-   "standard": "ISO 9001:2026",
-   "category": "ISO9001-2026",
-   "clause": "4.2",
-   "reference": "ISO 9001:2026 4.2",
-   "type": "tf",
-   "difficulty": "Advanced - Lead Auditor",
-   "points": 1,
-   "answer": 1,
-   "en": {
-    "question": "Where a regulator's legal product-safety requirements are relevant to QMS outputs, management may omit the regulator from interested-party analysis if customers have not mentioned those requirements in contracts.",
-    "options": [
-     "True",
-     "False"
-    ],
-    "explanation": "Relevant statutory and regulatory requirements are not optional based on customer wording."
-   }
-  },
-  {
-   "id": "Q103",
-   "standard": "ISO 9001:2026",
-   "category": "ISO9001-2026",
-   "clause": "4.3",
-   "reference": "ISO 9001:2026 4.3",
-   "type": "tf",
-   "difficulty": "Advanced - Lead Auditor",
-   "points": 1,
-   "answer": 0,
-   "en": {
-    "question": "A company can justify a requirement as not applicable to its QMS without weakening its ability or responsibility to ensure conforming products and services, but must support that conclusion in its scope.",
-    "options": [
-     "True",
-     "False"
-    ],
-    "explanation": "Non-applicability needs a defensible basis and cannot impair product/service conformity."
-   }
-  },
-  {
-   "id": "Q104",
-   "standard": "ISO 9001:2026",
-   "category": "ISO9001-2026",
-   "clause": "5.1.1",
-   "reference": "ISO 9001:2026 5.1.1",
-   "type": "tf",
-   "difficulty": "Advanced - Lead Auditor",
-   "points": 1,
-   "answer": 1,
-   "en": {
-    "question": "If an organization has an approved ethics policy, the auditor should consider ISO 9001:2026 leadership expectations fulfilled without reviewing actual management behaviors or quality-culture outcomes.",
-    "options": [
-     "True",
-     "False"
-    ],
-    "explanation": "A policy alone does not demonstrate active promotion of quality culture and ethical behavior."
-   }
-  },
-  {
-   "id": "Q105",
-   "standard": "ISO 9001:2026",
-   "category": "ISO9001-2026",
-   "clause": "6.1",
-   "reference": "ISO 9001:2026 6.1",
-   "type": "tf",
-   "difficulty": "Advanced - Lead Auditor",
-   "points": 1,
-   "answer": 0,
-   "en": {
-    "question": "An organization may use qualitative risk-and-opportunity evaluation methods rather than a numerical risk matrix, as long as its arrangements are appropriate and support effective QMS planning and evaluation.",
-    "options": [
-     "True",
-     "False"
-    ],
-    "explanation": "ISO 9001 does not mandate one risk analysis technique."
-   }
-  },
-  {
-   "id": "Q106",
-   "standard": "ISO 9001:2026",
-   "category": "ISO9001-2026",
-   "clause": "6.2",
-   "reference": "ISO 9001:2026 6.2",
-   "type": "tf",
-   "difficulty": "Advanced - Lead Auditor",
-   "points": 1,
-   "answer": 1,
-   "en": {
-    "question": "Because quality objectives are linked to strategic direction, it is acceptable to leave them unmeasurable when top management formally approves the objective statement and allocates an annual budget.",
-    "options": [
-     "True",
-     "False"
-    ],
-    "explanation": "Quality objectives are required to be measurable; approval and funding do not replace measurement."
-   }
-  },
-  {
-   "id": "Q107",
-   "standard": "ISO 9001:2026",
-   "category": "ISO9001-2026",
-   "clause": "6.3",
-   "reference": "ISO 9001:2026 6.3",
-   "type": "tf",
-   "difficulty": "Advanced - Lead Auditor",
-   "points": 1,
-   "answer": 0,
-   "en": {
-    "question": "A change to a QMS process should be assessed in light of potential consequences, the integrity of the system, available resources and affected responsibilities before or during planned implementation.",
-    "options": [
-     "True",
-     "False"
-    ],
-    "explanation": "Planning changes means assessing purpose, consequences, system integrity and resources."
-   }
-  },
-  {
-   "id": "Q108",
-   "standard": "ISO 9001:2026",
-   "category": "ISO9001-2026",
-   "clause": "7.2",
-   "reference": "ISO 9001:2026 7.2",
-   "type": "tf",
-   "difficulty": "Advanced - Lead Auditor",
-   "points": 1,
-   "answer": 1,
-   "en": {
-    "question": "Completion of a prescribed training course is by itself sufficient evidence that all persons carrying out quality-affecting work are competent, regardless of observed results and the complexity of their assigned tasks.",
-    "options": [
-     "True",
-     "False"
-    ],
-    "explanation": "Competence rests on demonstrated suitability, which may involve more than training attendance."
-   }
-  },
-  {
-   "id": "Q109",
-   "standard": "ISO 9001:2026",
-   "category": "ISO9001-2026",
-   "clause": "7.3",
-   "reference": "ISO 9001:2026 7.3",
-   "type": "tf",
-   "difficulty": "Advanced - Lead Auditor",
-   "points": 1,
-   "answer": 0,
-   "en": {
-    "question": "ISO 9001:2026 adds awareness of organizational quality culture and ethical behavior to the established expectations concerning quality policy, objectives, contribution and implications of nonconformity.",
-    "options": [
-     "True",
-     "False"
-    ],
-    "explanation": "The 2026 edition expands awareness to quality culture and ethical behavior."
-   }
-  },
-  {
-   "id": "Q110",
-   "standard": "ISO 9001:2026",
-   "category": "ISO9001-2026",
-   "clause": "8.3.4",
-   "reference": "ISO 9001:2026 8.3.4",
-   "type": "tf",
-   "difficulty": "Advanced - Lead Auditor",
-   "points": 1,
-   "answer": 1,
-   "en": {
-    "question": "Where a design output satisfies all documented engineering input specifications, design validation for intended user needs can automatically be omitted even if the product's real operating environment differs from the test environment.",
-    "options": [
-     "True",
-     "False"
-    ],
-    "explanation": "Verification alone does not substitute for applicable validation of intended use."
-   }
-  },
-  {
-   "id": "Q111",
-   "standard": "ISO 9001:2026",
-   "category": "ISO9001-2026",
-   "clause": "8.4",
-   "reference": "ISO 9001:2026 8.4",
-   "type": "tf",
-   "difficulty": "Advanced - Lead Auditor",
-   "points": 1,
-   "answer": 0,
-   "en": {
-    "question": "An organization remains responsible for ensuring conformity when a process is externally provided, so it should determine suitable supplier controls based on potential effects rather than relying solely on contract language.",
-    "options": [
-     "True",
-     "False"
-    ],
-    "explanation": "External provision does not eliminate the organization's QMS responsibilities."
-   }
-  },
-  {
-   "id": "Q112",
-   "standard": "ISO 9001:2026",
-   "category": "ISO9001-2026",
-   "clause": "8.6",
-   "reference": "ISO 9001:2026 8.6",
-   "type": "tf",
-   "difficulty": "Advanced - Lead Auditor",
-   "points": 1,
-   "answer": 1,
-   "en": {
-    "question": "A customer-requested delivery date permits release before planned acceptance arrangements are satisfactorily completed, even when no appropriate authority has approved a concession to the normal release rules.",
-    "options": [
-     "True",
-     "False"
-    ],
-    "explanation": "Release normally follows planned arrangements unless duly authorized and, where applicable, accepted."
-   }
-  },
-  {
-   "id": "Q113",
-   "standard": "ISO 9001:2026",
-   "category": "ISO9001-2026",
-   "clause": "9.2",
-   "reference": "ISO 9001:2026 9.2",
-   "type": "tf",
-   "difficulty": "Advanced - Lead Auditor",
-   "points": 1,
-   "answer": 0,
-   "en": {
-    "question": "A risk-informed internal audit programme may prioritize unstable high-impact processes and revisit prior findings while still ensuring that the QMS is audited against the applicable criteria over time.",
-    "options": [
-     "True",
-     "False"
-    ],
-    "explanation": "Programme planning considers process importance, changes and previous results."
-   }
-  },
-  {
-   "id": "Q114",
-   "standard": "ISO 9001:2026",
-   "category": "ISO9001-2026",
-   "clause": "10.1",
-   "reference": "ISO 9001:2026 10.1",
-   "type": "tf",
-   "difficulty": "Advanced - Lead Auditor",
-   "points": 1,
-   "answer": 1,
-   "en": {
-    "question": "Under ISO 9001:2026, continual improvement is evaluated against clause 10.3, while clause 10.1 addresses only isolated improvements and has no link to information from monitoring or management review.",
-    "options": [
-     "True",
-     "False"
-    ],
-    "explanation": "In 2026 continual improvement is 10.1, and 10.3 does not exist."
-   }
-  },
-  {
-   "id": "Q115",
-   "standard": "ISO/IEC 17021-1:2015",
-   "category": "ISO17021-1",
-   "clause": "5.2",
-   "reference": "ISO/IEC 17021-1:2015 5.2",
-   "type": "tf",
-   "difficulty": "Advanced - Lead Auditor",
-   "points": 1,
-   "answer": 1,
-   "en": {
-    "question": "A certification body may rely on client consent to eliminate any impartiality threat created by its auditors providing consulting services to the same QMS, without assessing or controlling that threat further.",
-    "options": [
-     "True",
-     "False"
-    ],
-    "explanation": "Consent does not remove impartiality duties or conflicts from consulting involvement."
-   }
-  },
-  {
-   "id": "Q116",
-   "standard": "ISO/IEC 17021-1:2015",
-   "category": "ISO17021-1",
-   "clause": "7.1-7.2",
-   "reference": "ISO/IEC 17021-1:2015 7.1-7.2",
-   "type": "tf",
-   "difficulty": "Advanced - Lead Auditor",
-   "points": 1,
-   "answer": 0,
-   "en": {
-    "question": "Before assigning a certification team, the body should determine applicable competence needs for the technical area and ensure the collective team's knowledge and skills match the audit's scope and complexity.",
-    "options": [
-     "True",
-     "False"
-    ],
-    "explanation": "Competence must be determined and matched to certification activities and technical areas."
-   }
-  },
-  {
-   "id": "Q117",
-   "standard": "ISO/IEC 17021-1:2015",
-   "category": "ISO17021-1",
-   "clause": "9.1",
-   "reference": "ISO/IEC 17021-1:2015 9.1",
-   "type": "tf",
-   "difficulty": "Advanced - Lead Auditor",
-   "points": 1,
-   "answer": 1,
-   "en": {
-    "question": "Where two clients have different organizational complexity and regulatory exposure, the certification body can use exactly the same predetermined audit duration without documenting any consideration of the differences.",
-    "options": [
-     "True",
-     "False"
-    ],
-    "explanation": "Audit time requires suitable, justified consideration of relevant factors."
-   }
-  },
-  {
-   "id": "Q118",
-   "standard": "ISO/IEC 17021-1:2015",
-   "category": "ISO17021-1",
-   "clause": "9.3.1",
-   "reference": "ISO/IEC 17021-1:2015 9.3.1",
-   "type": "tf",
-   "difficulty": "Advanced - Lead Auditor",
-   "points": 1,
-   "answer": 0,
-   "en": {
-    "question": "Stage 1 can inform whether the client is ready for Stage 2 by examining QMS documentation, relevant site conditions and internal audit or management review arrangements, among other topics.",
-    "options": [
-     "True",
-     "False"
-    ],
-    "explanation": "Stage 1 assesses preparedness and supports planning of Stage 2."
-   }
-  },
-  {
-   "id": "Q119",
-   "standard": "ISO/IEC 17021-1:2015",
-   "category": "ISO17021-1",
-   "clause": "9.3.2",
-   "reference": "ISO/IEC 17021-1:2015 9.3.2",
-   "type": "tf",
-   "difficulty": "Advanced - Lead Auditor",
-   "points": 1,
-   "answer": 1,
-   "en": {
-    "question": "An initial certification audit is adequately completed after Stage 1 if procedures appear consistent with the ISO standard; a Stage 2 effectiveness assessment is therefore unnecessary whenever a manual exists.",
-    "options": [
-     "True",
-     "False"
-    ],
-    "explanation": "Initial certification ordinarily uses Stage 1 and Stage 2, including effectiveness evaluation."
-   }
-  },
-  {
-   "id": "Q120",
-   "standard": "ISO/IEC 17021-1:2015",
-   "category": "ISO17021-1",
-   "clause": "9.4.5",
-   "reference": "ISO/IEC 17021-1:2015 9.4.5",
-   "type": "tf",
-   "difficulty": "Advanced - Lead Auditor",
-   "points": 1,
-   "answer": 0,
-   "en": {
-    "question": "A certification nonconformity should identify the applicable requirement and be supported by objective evidence, rather than rely on the auditor's personal preference for one particular management technique.",
-    "options": [
-     "True",
-     "False"
-    ],
-    "explanation": "Audit findings require clear criteria and supporting evidence."
-   }
-  },
-  {
-   "id": "Q121",
-   "standard": "ISO/IEC 17021-1:2015",
-   "category": "ISO17021-1",
-   "clause": "9.5.1",
-   "reference": "ISO/IEC 17021-1:2015 9.5.1",
-   "type": "tf",
-   "difficulty": "Advanced - Lead Auditor",
-   "points": 1,
-   "answer": 0,
-   "en": {
-    "question": "The person making the certification decision should be different from the person who carried out the audit, even if the lead auditor strongly recommends granting certification to the client.",
-    "options": [
-     "True",
-     "False"
-    ],
-    "explanation": "Separation of audit performance from certification decision-making is required."
-   }
-  },
-  {
-   "id": "Q122",
-   "standard": "ISO/IEC 17021-1:2015",
-   "category": "ISO17021-1",
-   "clause": "9.5.3",
-   "reference": "ISO/IEC 17021-1:2015 9.5.3",
-   "type": "tf",
-   "difficulty": "Advanced - Lead Auditor",
-   "points": 1,
-   "answer": 0,
-   "en": {
-    "question": "If verification of correction and corrective action for a major Stage 2 nonconformity is not completed within six months after the final day of Stage 2, another Stage 2 is required before recommending certification.",
-    "options": [
-     "True",
-     "False"
-    ],
-    "explanation": "The standard specifies the six-month consequence for initial certification."
-   }
-  },
-  {
-   "id": "Q123",
-   "standard": "ISO/IEC 17021-1:2015",
-   "category": "ISO17021-1",
-   "clause": "9.6.2",
-   "reference": "ISO/IEC 17021-1:2015 9.6.2",
-   "type": "tf",
-   "difficulty": "Advanced - Lead Auditor",
-   "points": 1,
-   "answer": 1,
-   "en": {
-    "question": "For continuing certification, a surveillance programme can be based solely on the certified client's self-declaration and internal audit reports, with no certification-body audit activities necessary throughout the cycle.",
-    "options": [
-     "True",
-     "False"
-    ],
-    "explanation": "The certification body must conduct suitable surveillance auditing and other activities."
-   }
-  },
-  {
-   "id": "Q124",
-   "standard": "ISO/IEC 17021-1:2015",
-   "category": "ISO17021-1",
-   "clause": "9.6.3",
-   "reference": "ISO/IEC 17021-1:2015 9.6.3",
-   "type": "tf",
-   "difficulty": "Advanced - Lead Auditor",
-   "points": 1,
-   "answer": 0,
-   "en": {
-    "question": "A recertification audit considers performance over the certification cycle, including previous surveillance reports and relevant organizational changes, instead of focusing only on documents produced during the final month.",
-    "options": [
-     "True",
-     "False"
-    ],
-    "explanation": "Recertification evaluates continued conformity and effectiveness over the cycle."
-   }
-  },
-  {
-   "id": "Q125",
-   "standard": "ISO/IEC 17021-1:2015",
-   "category": "ISO17021-1",
-   "clause": "9.6.5",
-   "reference": "ISO/IEC 17021-1:2015 9.6.5",
-   "type": "tf",
-   "difficulty": "Advanced - Lead Auditor",
-   "points": 1,
-   "answer": 0,
-   "en": {
-    "question": "A certification body should have a defined process for suspending, withdrawing or reducing certification scope when warranted, but an individual auditor does not automatically have authority to cancel a certificate on site.",
-    "options": [
-     "True",
-     "False"
-    ],
-    "explanation": "Status changes are certification-body decisions under established processes."
-   }
-  },
-  {
-   "id": "Q126",
-   "standard": "ISO/IEC 17021-1:2015",
-   "category": "ISO17021-1",
-   "clause": "9.7",
-   "reference": "ISO/IEC 17021-1:2015 9.7",
-   "type": "tf",
-   "difficulty": "Advanced - Lead Auditor",
-   "points": 1,
-   "answer": 1,
-   "en": {
-    "question": "An appeal against a certification decision may be evaluated solely by the individual who made the contested decision, provided the client has signed the appeal form and the original decision was documented.",
-    "options": [
-     "True",
-     "False"
-    ],
-    "explanation": "Appeals require an impartial evaluation and decision process."
-   }
-  },
-  {
-   "id": "Q127",
-   "standard": "ISO/IEC 17021-1:2015",
-   "category": "ISO17021-1",
-   "clause": "9.8",
-   "reference": "ISO/IEC 17021-1:2015 9.8",
-   "type": "tf",
-   "difficulty": "Advanced - Lead Auditor",
-   "points": 1,
-   "answer": 1,
-   "en": {
-    "question": "Complaints alleging misleading use of certification marks need not be considered when they come from external parties rather than the certified organization, even where evidence is presented and the claim concerns the certification body.",
-    "options": [
-     "True",
-     "False"
-    ],
-    "explanation": "Complaint handling includes relevant complaints from interested parties."
    }
   },
   {

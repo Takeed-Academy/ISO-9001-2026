@@ -43,19 +43,19 @@
      leave those unset rather than invent them — so a quiz reports a score
      and no pass/fail verdict. Only the final has a mark to pass. */
 
-  /* Every sitting gets its own random question order. Two candidates side by
-     side are never on the same question, and a retake is not the same paper
-     in the same sequence.
+  /* FIXED question order. Every candidate sits each paper in the same
+     sequence — the order the pack lists — so question 1 is the same question
+     for everyone, printed materials can be numbered by position, and two
+     candidates can be talked through the paper together.
 
-     The order is drawn once when the paper is started and then persisted, so
-     Resume brings back the identical sequence rather than reshuffling — a
-     refresh mid-exam must not cost anyone their place.
+     The order is still written into the session record when a paper is
+     started and still persisted, so Resume is unchanged. Nothing downstream
+     cares whether the order was shuffled or copied: the answer-mapping
+     contract stores original option indices either way.
 
-     Because the order is no longer fixed, screen position is meaningless as
-     an identifier: the review screen and the instructor answer key both key
-     off the question's own id (D1-01 …) instead. Set this to false to sit
-     each assessment in the order the delivery pack lists it. */
-  var SHUFFLE_QUESTIONS = true;
+     Set this to true to draw a fresh random order per sitting instead. The
+     shuffle below is kept wired up for exactly that. */
+  var SHUFFLE_QUESTIONS = false;
 
   /* ------------------------------------------------- fixed option ordering
    *
@@ -130,7 +130,7 @@
       statMarks: "marks",
 
       hubTitle: "Choose a paper",
-      hubHint: "Questions are drawn in a random order, fresh for every sitting. The three standard papers are for revision and reveal each answer as you go; the full examination is sealed until you finish.",
+      hubHint: "Questions appear in a fixed order, the same for every candidate. The three standard papers are for revision and reveal each answer as you go; the full examination is sealed until you finish.",
       sectionTag: "Revision",
       finalTag: "Full examination",
       questionsCount: "{n} questions",
@@ -221,7 +221,7 @@
       questionN: "Question {n}",
 
       restartConfirmTitle: "Retake",
-      restartConfirmBody: "This will discard your answers for this paper and draw a new question order. Continue?",
+      restartConfirmBody: "This will discard your answers for this paper and start again from question 1. Continue?",
       restartYes: "Yes, start over",
       cancel: "Cancel",
 
@@ -444,7 +444,10 @@
 
   /* --------------------------------------------------- session lifecycle */
 
-  /* Fisher-Yates. Every position gets an equal chance, which the naive
+  /* Unused while SHUFFLE_QUESTIONS is false, and deliberately kept: flipping
+     that one flag is the whole of the change back to random order.
+
+     Fisher-Yates. Every position gets an equal chance, which the naive
      `sort(function () { return Math.random() - 0.5; })` does not — that one
      is biased and, worse, is biased differently in every browser engine. */
   function shuffle(list) {
@@ -1171,10 +1174,10 @@
     return '<article class="panel-card review-card ' + statusClass + '">' +
       '<header class="review-head">' +
       '<span class="review-index">' + esc(t("questionN", { n: num(position) })) + "</span>" +
-      /* The position is this sitting's position and nobody else's, because
-         the order is random. The id is the only thing that means the same to
-         the candidate, the trainer and the printed model answer, so it is
-         shown alongside. */
+      /* With a fixed order the position is now the same for everyone, so it
+         is a usable reference again. The id is kept beside it anyway: it is
+         what the pack, the answer key and any future reordering all agree
+         on, and it costs one small line. */
       '<span class="review-id">' + esc(q.id) + "</span>" +
       (q.standard ? '<span class="badge badge-standard">' + esc(q.standard) + "</span>" : "") +
       (s.flags[id] ? '<span class="badge badge-flagged">' + icon("flag") +

@@ -24,10 +24,14 @@
 (function () {
   "use strict";
 
-  /* Its own key: this is a different bank from the IMS projects beside it,
-     and a stale record from one of those would resume into questions that do
-     not exist here. */
-  var STORAGE_KEY = "takeedLeadAuditor140.v1";
+  /* Its own key, and bumped to .v2 when the question order was fixed.
+
+     A session saved before that change carries the random order it was drawn
+     with, and Resume would faithfully restore it — so a candidate who had
+     started the paper once would keep seeing the old shuffled order no matter
+     what the data says. Changing the key abandons those records instead of
+     resurrecting them. Bump it again on any change to how `ids` is built. */
+  var STORAGE_KEY = "takeedLeadAuditor140.v2";
 
   var DATA = (typeof window !== "undefined" && window.TAKEED_BANK) || null;
   var BANK = (DATA && DATA.questions) || [];
@@ -199,6 +203,7 @@
       practiceOnlyNote: "A training result only. The {n}% threshold is this course\u2019s own and is not an ISO or Exemplar Global rule; this is not a certification decision.",
       reviewAnswers: "Review Answers",
       retakeExam: "Retake",
+      startOver: "Start over",
       backToHub: "All papers",
 
       reviewEyebrow: "Detailed review",
@@ -301,6 +306,23 @@
       return Object.prototype.hasOwnProperty.call(allowed, id);
     });
     if (ids.length !== session.ids.length) return null;
+
+    /* When the order is fixed, a saved session must be in THAT order. A record
+       written before the order changed holds the old sequence, and Resume
+       would faithfully restore it — so the paper would keep opening on the old
+       question 1 however many times the data is corrected. Discarding it is
+       the only honest option: the alternative is a candidate sitting a
+       different paper from the printed one and nobody being able to tell.
+
+       This also means no future order change needs a storage-key bump to take
+       effect. It takes effect on the next load, by itself. */
+    if (!SHUFFLE_QUESTIONS) {
+      var canonical = questionsForExam(exam).map(function (q) { return q.id; });
+      if (ids.length !== canonical.length) return null;
+      for (var c = 0; c < canonical.length; c++) {
+        if (ids[c] !== canonical[c]) return null;
+      }
+    }
 
     var orders = {};
     for (var i = 0; i < ids.length; i++) {
@@ -787,6 +809,13 @@
         status = '<p class="exam-status is-live">' +
           esc(t("inProgress", { done: num(answeredCount(s)), total: num(s.ids.length) })) + "</p>";
         action = t("resumeExam");
+        /* A finished paper has always offered a retake; a part-finished one
+           offered only Resume, which left anyone with an unwanted session —
+           a stale one, or just a paper opened by mistake — with no way back
+           to a clean start from this screen. */
+        extra = '<button class="ghost-button compact" type="button" data-retake="' +
+          exam.key + '">' + icon("rotate") + "<span>" + esc(t("startOver")) +
+          "</span></button>";
       }
 
       return '<article class="exam-card' + (isFull ? " is-full" : "") + '">' +

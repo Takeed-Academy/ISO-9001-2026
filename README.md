@@ -226,6 +226,57 @@ Auditor error:
 
 ---
 
+## If the site still shows the old questions
+
+Static sites have no server to send cache headers, so a browser may keep
+serving the `app.js` and `data/questions.js` it already has and never ask for
+the new ones. The symptom is specific and misleading: the files on disk are
+correct, but the page keeps showing the old behaviour — a different question 1
+on every load, long after the shuffle was switched off.
+
+Two guards are in place:
+
+**Versioned asset URLs.** `index.html` references each asset with a hash of its
+own contents:
+
+```html
+<script src="app.js?v=906c4f01"></script>
+```
+
+A URL the browser has never seen cannot be in its cache. Re-stamp after any
+edit to `app.js`, `data/questions.js` or `styles.css`:
+
+```
+python3 tools/stamp_version.py
+```
+
+Forgetting that step is the one way to reintroduce the problem, so the test
+suite fails if a stamp does not match the file it names — a stale stamp is
+worse than none, because it looks handled.
+
+**Stale sessions are rejected on load.** A session saved before the order was
+fixed carries the sequence it was drawn with, and Resume would faithfully
+restore it — so the paper keeps opening on the old question 1 however many
+times the data is corrected, and no amount of refreshing helps because the
+cache is no longer the problem.
+
+While the order is fixed, `sanitizeSession` now requires a saved session to be
+in *that* order and discards it otherwise. A future order change therefore
+takes effect by itself on the next load; no storage-key bump to remember.
+(`STORAGE_KEY` was bumped to `.v2` once, when this guard was added, to clear
+records written before it existed.)
+
+**And an in-progress paper can be abandoned.** A finished paper always offered
+a retake; a part-finished one offered only Resume, which left anyone with an
+unwanted session — stale, or just a paper opened by mistake — with no way back
+to a clean start. Every in-progress card now carries **Start over**.
+
+`index.html` itself still has a fixed URL, so the first load after an update
+may need one refresh (Ctrl-F5 / Cmd-Shift-R). That is one file rather than all
+of them.
+
+---
+
 ## Deploying to GitHub Pages
 
 1. Push the contents of this folder to a repository's default branch.

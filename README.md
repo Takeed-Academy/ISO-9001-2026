@@ -279,7 +279,7 @@ the new ones. The symptom is specific and misleading: the files on disk are
 correct, but the page keeps showing the old behaviour — a different question 1
 on every load, long after the shuffle was switched off.
 
-Two guards are in place:
+Three guards are in place:
 
 **Versioned asset URLs.** `index.html` references each asset with a hash of its
 own contents:
@@ -298,6 +298,47 @@ python3 tools/stamp_version.py
 Forgetting that step is the one way to reintroduce the problem, so the test
 suite fails if a stamp does not match the file it names — a stale stamp is
 worse than none, because it looks handled.
+
+**A freshness check for `index.html` itself.** The hashes above make a stale
+*asset* impossible, but they are written **into** `index.html` — so if that
+file is served from cache, the page loads yesterday's hashes and everything
+downstream is yesterday's too.
+
+Nothing written inside an HTML file can prevent that. The `<meta
+http-equiv="Cache-Control">` tags at the top of `index.html` are kept for
+proxies and offline readers, but Chrome and Safari ignore them outright;
+browsers take their caching orders from **response headers**, which a static
+host sends and this repository does not control. GitHub Pages sends
+`max-age=600` and offers no override. Anyone who tells you a meta tag fixes
+this is describing something that stopped being true years ago.
+
+So the page detects staleness instead of trying to forbid it:
+
+```
+index.html    <meta name="build" content="9cda79d7">
+version.json  {"build": "9cda79d7"}
+```
+
+On load the page fetches `version.json` with `cache: "no-store"` and a
+cachebust parameter — a request that reaches the network whatever the cache
+holds. Equal ids mean the page is current. Different ids mean *this page* is
+the stale one, and it reloads once, which revalidates it.
+
+The guard matters as much as the check: the build it reloaded for is recorded
+in `sessionStorage`, so if the reload comes back stale anyway (an aggressive
+CDN), it stops rather than looping forever. On `file://` the fetch is blocked
+and nothing happens, which is right — a local copy has no newer version to
+find.
+
+`tools/stamp_version.py` writes the id in both places from a hash of the three
+asset hashes, so it cannot be set by hand and cannot stay still while a file
+changes. The test suite runs the shipped script against a fake window and
+asserts all three cases: current page does not reload, stale page reloads
+once, a reload that came back stale stops.
+
+The repository also carries a `_headers` file. Netlify, Cloudflare Pages and
+Vercel read it and the stale window disappears entirely; **GitHub Pages
+ignores it**, which is why the check above exists rather than relying on it.
 
 **Stale sessions are rejected on load.** A session saved before the order was
 fixed carries the sequence it was drawn with, and Resume would faithfully

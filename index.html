@@ -6,8 +6,60 @@
     <title>Lead Auditor Examination — ISO 9001:2026 | اختبار المدقق الرئيسي</title>
     <meta name="description" content="ISO 9001:2026 Lead Auditor Examination — 140 questions in English and Arabic across ISO 9001:2026, ISO 19011:2026 and ISO/IEC 17021-1:2015, with three revision papers and a full examination.">
     <meta name="color-scheme" content="light">
+
+    <!-- Cache directives. Browsers take their caching orders from HTTP
+         response headers, and a static host sends those, not this file;
+         Chrome and Safari ignore http-equiv cache meta entirely. These are
+         kept because some proxies and offline readers still read them, but
+         they are NOT what keeps this page current. The two mechanisms that
+         actually do are the ?v= content hashes on every asset below, and
+         the freshness check at the end of this head. -->
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+
+    <!-- Written by tools/stamp_version.py: a hash of the three assets
+         together. version.json carries the same value, and the script below
+         compares them. -->
+    <meta name="build" content="9cda79d7">
+
     <link rel="icon" type="image/png" href="assets/logos/takeed-mark.png">
     <link rel="stylesheet" href="styles.css?v=213250cc">
+
+    <!-- Freshness check.
+         The ?v= hashes make a stale ASSET impossible — a URL the browser has
+         never seen cannot be in its cache. But they are written into THIS
+         file, so if index.html itself is served from cache the page loads
+         yesterday's hashes and everything downstream is yesterday's too.
+         Nothing inside an HTML file can stop that; only a response header
+         can, and GitHub Pages sends its own.
+         So instead of trying to prevent it, detect it. version.json is
+         fetched with cache:"no-store" and a cachebust parameter, which goes
+         to the network whatever the cache holds. A mismatch means this page
+         is stale, and one reload revalidates it.
+         Guarded to fire at most once per build per tab: if the reload comes
+         back stale anyway (an aggressive CDN), it stops instead of looping.
+         On file:// the fetch is blocked by CORS and the catch does nothing,
+         which is correct — a local copy has no newer version to find. -->
+    <script>
+      (function () {
+        if (!window.fetch) return;
+        var meta = document.querySelector('meta[name="build"]');
+        var build = meta && meta.getAttribute("content");
+        if (!build) return;
+        fetch("version.json?t=" + Date.now(), { cache: "no-store" })
+          .then(function (r) { return r.ok ? r.json() : null; })
+          .then(function (v) {
+            if (!v || !v.build || v.build === build) return;
+            try {
+              if (sessionStorage.getItem("takeedBuildSeen") === v.build) return;
+              sessionStorage.setItem("takeedBuildSeen", v.build);
+            } catch (e) { return; }   /* no sessionStorage, no loop guard */
+            location.reload();
+          })
+          .catch(function () { /* offline or file:// — keep what we have */ });
+      })();
+    </script>
   </head>
   <body>
     <a class="skip-link" href="#mainContent" id="skipLink">Skip to content</a>

@@ -1,0 +1,27 @@
+# Cache headers.
+#
+# Honoured by Netlify, Cloudflare Pages and Vercel. GitHub Pages IGNORES this
+# file — it sends its own `Cache-Control: max-age=600` and offers no way to
+# override it. The site is built not to depend on headers either way: assets
+# carry ?v= content hashes, and index.html checks version.json on load. This
+# file only removes the ten-minute stale window on hosts that read it.
+#
+# index.html: never reuse without asking the server. It is the file that
+# carries the asset hashes, so a stale copy makes everything else stale.
+/index.html
+  Cache-Control: no-cache, must-revalidate
+/
+  Cache-Control: no-cache, must-revalidate
+
+# version.json is the staleness probe itself, so it must never be cached.
+/version.json
+  Cache-Control: no-store
+
+# Hashed assets are safe to keep for a year: their URL changes when their
+# bytes change, so a cached copy can never be the wrong one.
+/app.js
+  Cache-Control: public, max-age=31536000, immutable
+/styles.css
+  Cache-Control: public, max-age=31536000, immutable
+/data/questions.js
+  Cache-Control: public, max-age=31536000, immutable

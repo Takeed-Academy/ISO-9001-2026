@@ -61,6 +61,12 @@
      shuffle below is kept wired up for exactly that. */
   var SHUFFLE_QUESTIONS = false;
 
+  /* Which language the page opens in. Must match the lang/dir that
+     index.html is served with, or the page paints one way and flips after
+     the first render, which is a visible jump. Change both together. */
+  var DEFAULT_LANG = (DATA && DATA.defaultLanguage) || "en";
+  var LANGS = (DATA && DATA.languages) || ["en", "ar"];
+
   /* ------------------------------------------------- fixed option ordering
    *
    * This bank balances its correct answers at source: across the 70 MCQs the
@@ -117,18 +123,148 @@
      in CSS logical properties, so this dictionary plus dir="ltr" is the whole
      of the localisation; an Arabic sibling of this project exists and needed
      no new CSS rules beyond mirroring two gradients. */
+  /* Arabic and English. The bank carries both for every question, option and
+     explanation, so switching language swaps strings and nothing else — the
+     option order and the stored answer are language-neutral by construction
+     (see the answer-mapping contract at the top of this file).
+
+     The stylesheet is written in CSS logical properties, so the only
+     direction-specific work is the `dir` attribute plus two mirrored
+     gradients and the arrow glyphs. */
   var I18N = {
+    ar: {
+      dir: "rtl", htmlLang: "ar",
+      langLabel: "اللغة", langAr: "العربية", langEn: "English",
+      docTitle: "اختبار المدقق الرئيسي — ISO 9001:2026",
+      brandTitle: "اختبار المدقق الرئيسي",
+      brandSubtitle: "ISO 9001:2026 · 19011 · 17021-1",
+      skip: "تخطٍّ إلى المحتوى",
+
+      heroEyebrow: "مستوى المدقق الرئيسي",
+      heroTitle: "اختبار المدقق الرئيسي",
+      heroSubtitle: "ISO 9001:2026 · ISO 19011:2026 · ISO/IEC 17021-1:2015",
+      heroDescription: "{total} سؤالًا تطبيقيًا موزّعة على ثلاث مواصفات، كلها اختيار من متعدد بأربعة خيارات. راجع مواصفة واحدة مع كشف الإجابة بعد كل سؤال، أو اجلس للاختبار الشامل: {minutes} دقيقة، والنجاح {pass}%، ولا يُكشف شيء حتى الإنهاء.",
+      statQuestions: "سؤالًا",
+      statStandards: "مواصفات",
+      statMarks: "درجة",
+
+      hubTitle: "اختر الورقة",
+      hubHint: "تظهر الأسئلة بترتيب ثابت، نفسه لكل متدرب. أوراق المواصفات الثلاث للمراجعة وتكشف الإجابة أولًا بأول؛ أما الاختبار الشامل فمغلق حتى الإنهاء.",
+      sectionTag: "مراجعة",
+      finalTag: "الاختبار الشامل",
+      questionsCount: "{n} سؤالًا",
+      minutesTag: "{n} دقيقة",
+      modeStudyTag: "وضع المراجعة",
+      modeExamTag: "وضع الاختبار",
+      passMarkTag: "النجاح {n}%",
+      startExam: "ابدأ",
+      resumeExam: "استكمال",
+      reviewExam: "عرض النتيجة",
+      inProgress: "قيد الحل — {done} من {total}",
+      completedTag: "مكتمل — {pct}%",
+
+      practiceEyebrow: "جلسة اختبار",
+      questionOf: "السؤال {current} من {total}",
+      answeredCount: "{n} مُجاب",
+      flaggedCount: "{n} مُعلَّم",
+      studyProgress: "{n} تم كشفها",
+      elapsed: "الوقت المنقضي",
+      remaining: "الوقت المتبقي",
+      fiveMinutesLeft: "تبقّت خمس دقائق.",
+      timeUpNotice: "انتهى الوقت، وسُلِّمت الورقة تلقائيًا.",
+      timedOutNote: "انتهى الوقت المحدد وسُلِّمت الورقة تلقائيًا.",
+      progressLabel: "التقدم",
+      previous: "السابق",
+      next: "التالي",
+      clearAnswer: "مسح الإجابة",
+      flag: "تعليم للمراجعة",
+      unflag: "إلغاء التعليم",
+      finish: "إنهاء الاختبار",
+      pressNextToReveal: "اضغط «التالي» لعرض الإجابة الصحيحة والشرح.",
+      feedbackCorrect: "إجابة صحيحة",
+      feedbackIncorrect: "إجابة غير صحيحة",
+      feedbackCorrectIs: "الإجابة الصحيحة هي الخيار {letter}.",
+      feedbackCorrectIsTf: "الإجابة الصحيحة هي: {letter}.",
+      answerLocked: "تم تسجيل إجابتك لهذا السؤال ولا يمكن تغييرها.",
+      questionMap: "لوحة الأسئلة",
+      legendCurrent: "الحالي",
+      legendAnswered: "مُجاب",
+      legendUnanswered: "غير مُجاب",
+      legendFlagged: "مُعلَّم",
+      goToQuestion: "الانتقال إلى السؤال {n}",
+
+      confirmTitle: "إنهاء الاختبار",
+      confirmUnanswered: "لديك {n} من الأسئلة غير مجابة. هل تريد الإنهاء وإظهار النتائج؟",
+      confirmComplete: "لقد أجبت عن جميع الأسئلة. هل تريد الإنهاء وإظهار النتائج؟",
+      confirmYes: "إنهاء وعرض النتائج",
+      confirmNo: "العودة للأسئلة",
+
+      resultsEyebrow: "ملخص الأداء",
+      resultsTitle: "النتيجة",
+      scoreLabel: "النسبة",
+      correct: "إجابات صحيحة",
+      incorrect: "إجابات خاطئة",
+      unanswered: "غير مجابة",
+      totalQuestions: "إجمالي الأسئلة",
+      timeTaken: "الوقت المستغرق",
+      breakdownTitle: "التوزيع حسب المواصفة",
+      performanceLabel: "مستوى الأداء",
+      perfStrong: "أداء قوي",
+      perfGood: "أداء جيد",
+      perfDeveloping: "أداء يحتاج إلى تطوير",
+      perfFoundational: "أداء يحتاج إلى مراجعة أساسية",
+      mockPass: "اجتياز حد النجاح ({n}%)",
+      mockFail: "دون حد النجاح ({n}%)",
+      practiceOnlyNote: "نتيجة تدريبية فقط. حد الـ{n}% خاص بهذه الدورة وليس قاعدة من ISO أو جهة اعتماد، وهذه ليست قرار منح شهادة.",
+      reviewAnswers: "مراجعة الإجابات",
+      retakeExam: "إعادة",
+      startOver: "بدء من جديد",
+      backToHub: "كل الأوراق",
+
+      reviewEyebrow: "مراجعة تفصيلية",
+      reviewTitle: "مراجعة الإجابات",
+      backToResults: "العودة إلى النتيجة",
+      filterAll: "الكل",
+      filterIncorrect: "الخاطئة",
+      filterUnanswered: "غير المجابة",
+      filterFlagged: "المُعلَّمة",
+      filterEmpty: "لا توجد أسئلة ضمن هذا التصنيف.",
+      yourAnswer: "إجابتك",
+      correctAnswer: "الإجابة الصحيحة",
+      noAnswer: "لم تتم الإجابة",
+      explanation: "الشرح",
+      clauseLabel: "المرجع",
+      statusCorrect: "صحيحة",
+      statusIncorrect: "خاطئة",
+      statusUnanswered: "غير مجابة",
+      statusFlagged: "مُعلَّم",
+      questionN: "سؤال {n}",
+
+      restartConfirmTitle: "بدء من جديد",
+      restartConfirmBody: "سيتم حذف إجاباتك في هذه الورقة والبدء من السؤال 1. هل تريد المتابعة؟",
+      restartYes: "نعم، ابدأ من جديد",
+      cancel: "إلغاء",
+
+      footerBrand: "أكاديمية تأكيد — اختبار المدقق الرئيسي",
+      footerNote: "مادة تدريبية مُعدة لأكاديمية تأكيد. معايير ISO محمية بحقوق المنظمة الدولية للتقييس، وهذا الموقع يعرض مفاهيم بصياغة تعليمية ولا يعيد نشر نص المعيار.",
+      footerVerify: "ISO 19011:2026 دليل إرشادي لا مواصفة متطلبات لمنح الشهادات، و ISO/IEC 17021-1:2015 يخص جهات منح الشهادات لا نظام الجهة الخاضعة. يُنصح بمراجعة فنية على نسخ مرخّصة قبل أي استخدام عالي المخاطر.",
+
+      bankErrorTitle: "تعذّر تحميل بنك الأسئلة",
+      bankErrorBody: "لم يتم العثور على ملف الأسئلة. تأكد من وجود data/questions.js بجانب الصفحة."
+    },
+
     en: {
       dir: "ltr", htmlLang: "en",
-      docTitle: "Lead Auditor Examination — 140 Questions",
+      langLabel: "Language", langAr: "العربية", langEn: "English",
+      docTitle: "Lead Auditor Examination — ISO 9001:2026",
       brandTitle: "Lead Auditor Examination",
-      brandSubtitle: "ISO 9001:2026 · 17021-1 · 19011",
+      brandSubtitle: "ISO 9001:2026 · 19011 · 17021-1",
       skip: "Skip to content",
 
       heroEyebrow: "Advanced Lead Auditor level",
       heroTitle: "Lead Auditor Examination",
-      heroSubtitle: "ISO 9001:2026 · ISO/IEC 17021-1:2015 · ISO 19011:2026",
-      heroDescription: "{total} scenario questions across three standards — {mcq} multiple choice and {tf} true/false. Practise a single standard with the answer revealed as you go, or sit the full paper: {minutes} minutes, {pass}% to pass, nothing revealed until you finish.",
+      heroSubtitle: "ISO 9001:2026 · ISO 19011:2026 · ISO/IEC 17021-1:2015",
+      heroDescription: "{total} scenario questions across three standards, all multiple choice with four options. Practise a single standard with the answer revealed as you go, or sit the full paper: {minutes} minutes, {pass}% to pass, nothing revealed until you finish.",
       statQuestions: "questions",
       statStandards: "standards",
       statMarks: "marks",
@@ -198,9 +334,9 @@
       perfGood: "Good performance",
       perfDeveloping: "Developing performance",
       perfFoundational: "Needs foundational review",
-      mockPass: "At or above the training pass threshold ({n}%)",
-      mockFail: "Below the training pass threshold ({n}%)",
-      practiceOnlyNote: "A training result only. The {n}% threshold is this course\u2019s own and is not an ISO or Exemplar Global rule; this is not a certification decision.",
+      mockPass: "At or above the pass mark ({n}%)",
+      mockFail: "Below the pass mark ({n}%)",
+      practiceOnlyNote: "A training result only. The {n}% threshold is this course\u2019s own and is not an ISO or accreditation rule; this is not a certification decision.",
       reviewAnswers: "Review Answers",
       retakeExam: "Retake",
       startOver: "Start over",
@@ -225,7 +361,7 @@
       statusFlagged: "Flagged",
       questionN: "Question {n}",
 
-      restartConfirmTitle: "Retake",
+      restartConfirmTitle: "Start over",
       restartConfirmBody: "This will discard your answers for this paper and start again from question 1. Continue?",
       restartYes: "Yes, start over",
       cancel: "Cancel",
@@ -246,7 +382,17 @@
   var pendingModal = null;
 
   function defaultState() {
-    return { view: "hub", activeExam: null, sessions: {} };
+    return {
+      lang: DEFAULT_LANG,
+      /* False until the reader presses the switch. Without this flag a saved
+         language is indistinguishable from the default that was written on
+         the first visit, so changing the default would never reach anyone
+         who had already loaded the page once. */
+      langChosen: false,
+      view: "hub",
+      activeExam: null,
+      sessions: {}
+    };
   }
 
   function examByKey(key) {
@@ -285,6 +431,13 @@
         if (clean) sessions[key] = clean;
       });
       return {
+        /* Only a language the reader picked themselves overrides the
+           default, and only if the build still ships it — otherwise a
+           stale write from an earlier visit would outrank the default and
+           leave the page with an empty dictionary. */
+        lang: saved.langChosen && LANGS.indexOf(saved.lang) !== -1
+          ? saved.lang : DEFAULT_LANG,
+        langChosen: !!saved.langChosen && LANGS.indexOf(saved.lang) !== -1,
         view: "hub",
         activeExam: null,
         sessions: sessions
@@ -401,6 +554,8 @@
   function saveState() {
     try {
       localStorage.setItem(STORAGE_KEY, JSON.stringify({
+        lang: state.lang,
+        langChosen: !!state.langChosen,
         sessions: state.sessions
       }));
     } catch (e) { /* private mode / quota — keep the in-memory session alive */ }
@@ -416,7 +571,11 @@
   function $all(sel, root) { return Array.prototype.slice.call((root || document).querySelectorAll(sel)); }
 
   function t(key, vars) {
-    var value = I18N.en[key];
+    var dict = I18N[state.lang] || I18N[DEFAULT_LANG];
+    var value = dict[key];
+    /* Fall back to the other language rather than printing a raw key name if
+       a string is ever added to one dictionary and not the other. */
+    if (value === undefined) value = I18N[DEFAULT_LANG][key];
     if (value === undefined) value = key;
     if (vars) Object.keys(vars).forEach(function (n) {
       value = value.split("{" + n + "}").join(String(vars[n]));
@@ -456,10 +615,13 @@
       lock: '<path d="M6 11h12v9H6zM9 11V7.5a3 3 0 0 1 6 0V11" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>',
       book: '<path d="M4 5h7a2 2 0 0 1 2 2v13a2 2 0 0 0-2-2H4zM20 5h-7a2 2 0 0 0-2 2v13a2 2 0 0 1 2-2h7z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>'
     };
-    /* The glyphs are authored pointing right, which is correct for this LTR
-       document. The RTL sibling of this project mirrors them here instead. */
+    /* The glyphs are authored pointing right. In Arabic the next question is
+       to the LEFT, so the directional ones are mirrored rather than kept as a
+       second set of paths. */
+    var flip = (name === "arrowNext" || name === "arrowPrev" || name === "back") &&
+      state.lang === "ar" ? ' style="transform:scaleX(-1)"' : "";
     return '<svg class="ic" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" ' +
-      'focusable="false">' + (paths[name] || "") + "</svg>";
+      'focusable="false"' + flip + ">" + (paths[name] || "") + "</svg>";
   }
 
   function announce(msg) { var r = $("#liveRegion"); if (r) r.textContent = msg; }
@@ -529,9 +691,9 @@
   }
 
   /* The bank is English-only, but the engine still reads question text
-     through this one accessor rather than touching `q.en` in a dozen places.
-     Adding a second language is then a change here, not a hunt. */
-  function localized(q) { return q.en; }
+     through this one accessor rather than touching `q.ar`/`q.en` in a dozen
+     places, which is what makes the language switch a two-line change. */
+  function localized(q) { return q[state.lang] || q[DEFAULT_LANG]; }
 
   function displayOptions(q) {
     var s = session();
@@ -727,7 +889,7 @@
      fixing the document so much as keeping the two sources of truth in
      agreement — and it is the one place to change if a language is added. */
   function applyChrome() {
-    var dict = I18N.en;
+    var dict = I18N[state.lang] || I18N[DEFAULT_LANG];
     var html = document.documentElement;
     html.setAttribute("lang", dict.htmlLang);
     html.setAttribute("dir", dict.dir);
@@ -737,6 +899,19 @@
     if (bt) bt.textContent = t("brandTitle");
     if (bs) bs.textContent = t("brandSubtitle");
     if (sk) sk.textContent = t("skip");
+
+    var sw = $("#langSwitch");
+    if (sw) {
+      sw.setAttribute("aria-label", t("langLabel"));
+      $all(".lang-button", sw).forEach(function (b) {
+        var code = b.getAttribute("data-lang");
+        var on = code === state.lang;
+        b.classList.toggle("is-active", on);
+        /* aria-pressed, not aria-current: these are toggle buttons, and a
+           screen reader should say which one is pressed. */
+        b.setAttribute("aria-pressed", on ? "true" : "false");
+      });
+    }
 
     var fb = $("#footerBrand"), fn = $("#footerNote"), fv = $("#footerVerify");
     if (fb) fb.textContent = t("footerBrand");
@@ -760,11 +935,19 @@
 
   /* The card copy is the supplier's own Arabic title, not something this
      file writes — one less place for the wording to drift. */
+  function pickLang(value) {
+    if (!value) return "";
+    if (typeof value === "string") return value;
+    return value[state.lang] || value[DEFAULT_LANG] || "";
+  }
+
   function examMeta(exam) {
     if (!exam) return { title: "", sub: "", tag: "" };
     return {
-      title: exam.title,
-      sub: exam.subtitle || "",
+      /* The bank carries both languages for these, so pick rather than
+         assume. A plain string still works, for a bank that ships one. */
+      title: pickLang(exam.title),
+      sub: pickLang(exam.subtitle),
       tag: exam.standard ? t("sectionTag") : t("finalTag")
     };
   }
@@ -846,8 +1029,6 @@
       '<p class="hero-subtitle">' + esc(t("heroSubtitle")) + "</p>" +
       '<p class="hero-description">' + esc(t("heroDescription", {
         total: num(BANK.length),
-        mcq: num(BANK.filter(function (q) { return q.type === "mcq"; }).length),
-        tf: num(BANK.filter(function (q) { return q.type === "tf"; }).length),
         minutes: num(durationFor(examByKey("full")) || 0),
         pass: num(passMarkFor(examByKey("full")) || 0)
       })) + "</p>" +
@@ -1274,7 +1455,24 @@
 
   /* --------------------------------------------------------------- events */
 
+  function setLanguage(lang) {
+    if (LANGS.indexOf(lang) === -1 || state.lang === lang) return;
+    state.lang = lang;
+    /* A deliberate press, so it now outranks the shipped default. */
+    state.langChosen = true;
+    saveState();
+    /* Nothing else has to move. Question ids, option order, answers, flags
+       and revealed state are all language-neutral — a stored answer is an
+       index into the option array, and both languages share one array order
+       — so re-rendering swaps the strings and leaves the sitting intact,
+       mid-question and mid-exam. */
+    render();
+  }
+
   function onClick(e) {
+    var lang = e.target.closest("[data-lang]");
+    if (lang) { setLanguage(lang.getAttribute("data-lang")); return; }
+
     var modal = e.target.closest("[data-modal]");
     if (modal) {
       var kind = modal.getAttribute("data-modal");
@@ -1334,8 +1532,9 @@
     var tag = (e.target.tagName || "").toLowerCase();
     if (tag === "input" || tag === "textarea") return;
 
-    var forward = "ArrowRight";
-    var back = "ArrowLeft";
+    /* The arrow keys have to agree with the arrows drawn on the buttons. */
+    var forward = state.lang === "ar" ? "ArrowLeft" : "ArrowRight";
+    var back = state.lang === "ar" ? "ArrowRight" : "ArrowLeft";
     if (e.key === forward) { e.preventDefault(); advance(); }
     else if (e.key === back) { e.preventDefault(); goTo(s.current - 1); }
     else if (/^[1-4]$/.test(e.key)) {

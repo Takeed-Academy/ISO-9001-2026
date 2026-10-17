@@ -1,4 +1,4 @@
-# Lead Auditor Examination — 140 Questions
+# اختبار المدقق الرئيسي ISO 9001:2026 — Lead Auditor Examination
 
 **ISO 9001:2026 · ISO/IEC 17021-1:2015 · ISO 19011:2026**
 
@@ -40,10 +40,18 @@ fails if any instructor file moves into it.
 
 | Paper | Questions | Mode | Clock | Pass |
 | --- | ---: | --- | --- | --- |
-| ISO 9001:2026 | 70 | Revision | — | — |
-| ISO/IEC 17021-1:2015 | 35 | Revision | — | — |
-| ISO 19011:2026 | 35 | Revision | — | — |
-| **Full examination** | **140** | **Exam** | **180 min** | **70%** |
+| ISO 9001:2026 | 90 | Revision | — | — |
+| ISO 19011:2026 | 25 | Revision | — | — |
+| ISO/IEC 17021-1:2015 | 25 | Revision | — | — |
+| **Full examination** | **140** | **Exam** | **240 min** | **70%** |
+
+All 140 are multiple choice with four options; this bank has no true/false
+items. Every question, option and explanation is carried in **Arabic and
+English**, and a switch in the header moves between them.
+
+The source header suggests 75% as a pass mark and says plainly that this is
+"not an official ISO or accreditation pass mark". It is therefore a
+recommendation, and **70%** is set here instead — 98 of 140 marks.
 
 The revision papers carry no clock and no pass mark. The pack sets a threshold
 for the full paper only, so inventing one for a revision paper would be
@@ -73,6 +81,43 @@ completed, not resumable.
 
 The pack suggests 180–210 minutes; the lower bound is used so the clock is not
 generous by default. It is one number in `tools/build_bank.py`.
+
+---
+
+## Two languages, one sitting
+
+Every question, option and explanation ships in Arabic and English. The header
+carries a switch, and it can be used at any time — including mid-question, with
+answers already given.
+
+Nothing moves when it is pressed. A stored answer is an **index into the option
+array**, and both languages share one array order, so the language switch
+changes strings and only strings:
+
+```js
+answers[questionId] = order[clickedDisplayPosition];   // language-neutral
+answers[questionId] === question.answer                // scoring, likewise
+```
+
+The test suite asserts this directly: it answers several questions, snapshots
+the saved session, switches language and requires the session to be
+byte-identical — same question, same selection, same option order.
+
+The page opens in **English** (`dir="ltr"`) and `index.html` is served that
+way, so there is no flip after the first paint. Switching to Arabic sets
+`dir="rtl"`. The stylesheet is written in CSS logical properties, so the only
+direction-specific work is two mirrored gradients and the arrow glyphs, which
+flip with the language.
+
+The default lives in one place — `defaultLanguage` in `data/questions.js`
+(set by `build_bank.py`) — and `index.html` must be served with the matching
+`lang`/`dir`; a test asserts the two agree.
+
+A language is remembered **only once the reader presses the switch**
+(`langChosen`). Without that flag a saved language would be indistinguishable
+from the default written on a first visit, and changing the default would
+never reach anyone who had already opened the page. So a candidate who picks
+Arabic keeps Arabic; everyone else gets whatever the build ships.
 
 ---
 

@@ -151,6 +151,35 @@ ul { margin: 0; padding: 0; list-style: none; }
   gap: 10px;
 }
 
+/* ------------------------------------------------------- language switch */
+
+.lang-switch {
+  display: inline-flex;
+  padding: 3px;
+  background: var(--soft);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+}
+
+.lang-button {
+  padding: 7px 16px;
+  color: var(--muted);
+  background: transparent;
+  border: 0;
+  border-radius: 999px;
+  font-size: 13.5px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+/* Colour alone would not tell a colour-blind reader which language is
+   active, so the active one also inverts. */
+.lang-button.is-active {
+  color: #fff;
+  background: var(--navy);
+}
+
 .icon-button {
   display: inline-grid;
   place-items: center;
@@ -1130,6 +1159,7 @@ body.modal-open { overflow: hidden; }
   .brand span { padding-inline-start: 10px; }
   .brand strong { font-size: 13.5px; }
   .brand small { font-size: 11.5px; }
+  .lang-button { padding: 7px 12px; font-size: 12.5px; }
 
   .section-head { align-items: flex-start; }
   .metric-row span { font-size: 12px; padding: 6px 11px; }
